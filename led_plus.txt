@@ -1,0 +1,28 @@
+GPIOC_>MODER= 0x55555555;
+
+while
+GPIOC->ODR = 0x0000000D;
+HAL_Delay(100);
+GPIOC->ODR = 0x00000000;
+HAL_Delay(100);
+
+
+
+
+Button
+
+
+RCC->AHB1ENR = 1<<0 | 1<<2;
+GPIOA->MODER = 0x00000000;
+GPIOC->MODER = 0x55555555;
+
+while
+
+if(GPIOA->IDR &0x00000008)
+{
+GPIOC->ODR = 0x0000000D;
+}
+else
+{
+GPIOC-> ODR = 0x00000000;
+}
