@@ -1,0 +1,48 @@
+void USART_Send_char(char x)
+{
+USART3->DR = x;
+while(!(USART3->SR & (1<<6)))
+{
+}
+}
+
+void USART_Send_str(char *x)
+{
+int i=0;
+while(x[i]!='\0')
+{
+USART_send_char(x[i]);
+i+=1;
+}}
+
+
+int _write(int file, char *ptr, int len)
+{
+int DataIdx;
+for (DataIdx = 0; DataIdx < len; DataIdx++)
+{
+ITM_SendChar(*ptr++);
+}
+return len;
+}
+
+
+main
+
+
+
+RCC->AHB1ENR = (1 << 2) ;
+RCC->APB1ENR = (1 << 18);
+GPIOC->MODER = (2 << 20) | (2 << 22) ;
+GPIOC->AFR[1] = (7 << 8) | (7 << 12) ;
+USART3->CR1 = (1 << 13) | (1 << 3) | (1 << 2);
+USART3->BRR = (7 << 0) | (24 << 4) ;
+
+
+while
+printf("ADITYA");
+ USART_Send_Str("ADITYA\n\r");
+ HAL_Delay(100);
+
+
+
